@@ -165,7 +165,7 @@ template <typename MODEL> void testLinearVariableChangeAdjoint() {
                       << (zz1-zz2)/zz1 << std::endl;
     oops::Log::info() << "<dxout,KTdxin>-<Kdxout,dxin>/<Kdxout,dxin>="
                       << (zz1-zz2)/zz2 << std::endl;
-    const double tol = 1e-10;
+    const double tol = Test_::confs()[jj].getDouble("tolerance adjoint_inverse", 1e-10);
     EXPECT(oops::is_close(zz1, zz2, tol));
     const bool testinverse = Test_::confs()[jj].getBool("test inverse", true);
     if (testinverse)
